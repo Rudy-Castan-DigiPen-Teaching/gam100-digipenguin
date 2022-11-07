@@ -1,4 +1,4 @@
-// penguinz r kooler
+// penguinz r koolest
 
 #include <iostream>
 #include <doodle/doodle.hpp>
