@@ -131,13 +131,16 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="player2.cpp" />
     <ClCompile Include="shot.cpp" />
     <ClCompile Include="textbox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assets.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="player2.h" />
     <ClInclude Include="shot.h" />
     <ClInclude Include="textbox.h" />
   </ItemGroup>
