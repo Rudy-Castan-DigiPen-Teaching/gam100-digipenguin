@@ -12,7 +12,7 @@
 
 Image_assets image_assets;
 
-Player player(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, image_assets.player_sprite_placeholder);
+Player player(WINDOW_WIDTH / 2, 50, image_assets.player_sprite_placeholder);
 
 int main() {
 	std::cout << "Penguin" << std::endl;
@@ -26,6 +26,7 @@ int main() {
 		doodle::clear_background(255); // placeholder for bg (will be replaced with map())
 
 		player.update_position();
+		player.jump();
 		player.draw();
 		
 	}
