@@ -2,12 +2,17 @@
 
 #include <iostream>
 #include <doodle/doodle.hpp>
+#include "assets.h"
 #include "player.h"
 #include "shot.h"
 
 #define WINDOW_WIDTH    800
-#define WINDOW_HEIGHT   400
+#define WINDOW_HEIGHT   600
 #define WINDOW_TITLE	"hamburger"
+
+Image_assets image_assets;
+
+Player player(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, image_assets.player_sprite_placeholder);
 
 int main() {
 	std::cout << "Penguin" << std::endl;
@@ -16,8 +21,13 @@ int main() {
 	doodle::set_window_title(WINDOW_TITLE);
 	doodle::set_frame_of_reference(doodle::FrameOfReference::RightHanded_OriginBottomLeft);
 
-	while (!doodle::is_window_closed) {
-		// game
+	while (!doodle::is_window_closed()) {
+		doodle::update_window();
+		doodle::clear_background(255); // placeholder for bg (will be replaced with map())
+
+		player.update_position();
+		player.draw();
+		
 	}
 
 	return 0;
