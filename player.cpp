@@ -1,3 +1,11 @@
+﻿/*/--------------------------------------------------------------
+All content © 2022 DigiPen(USA) Corporation, all rights reserved.
+File Name : player.cpp
+Project: GAM100
+Author : Donghyeok Hahm(donghyeok.hahm)
+---------------------------------------------------------------- */
+
+
 #include "player.h"
 #include "shot.h"
 #include "enum.h"
@@ -29,7 +37,7 @@ void Player::update_position() {
 void Player::update_position() {
 	//block height value (change to platform height)
 
-	if (this->y > doodle::Height - height * 2) {
+	if (this->y < doodle::Height - height * 2) {
 		this->standing = true;
 	}
 	//make bool array
@@ -101,8 +109,8 @@ void Player::update_position() {
 	// gravity works
 
 	if (standing == false) {
-		this->y_velocity += gravity * doodle::DeltaTime;
-		this->y += this->y_velocity;
+		this->y_velocity -= gravity * doodle::DeltaTime;
+		this->y -= this->y_velocity;
 	}
 	else {
 		this->y_velocity = 0;
@@ -129,7 +137,7 @@ void Player::update_shot_direction() {
 
 void Player::jump() {
 	if (this->standing == true) {
-		this->y_velocity -= playerJumpHeight;
+		this->y_velocity += playerJumpHeight;
 		//^^ if timer set finished -> y_velocity -= player_jump_height * dt(deltatime)?
 		this->standing = false;
 	}
