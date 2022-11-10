@@ -18,7 +18,7 @@ Author : Donghyeok Hahm(donghyeok.hahm)
 constexpr double gravity = 9.81;
 
 //player setting///////////////////////////////////////////
-constexpr double playerJumpHeight = 5;
+constexpr double playerJumpHeight = 10;
 constexpr double playerSpeed = 4;
 constexpr int playerColor = 0x2743D2ff;
 
