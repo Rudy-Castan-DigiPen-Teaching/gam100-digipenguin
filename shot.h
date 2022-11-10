@@ -3,6 +3,9 @@
 
 #include <doodle/doodle.hpp>
 #include "enum.h"
+#include "assets.h"
+
+extern Shot_sprites shot_sprites;
 
 class Shot;
 
@@ -10,20 +13,16 @@ extern std::vector<Shot*> shots_fired;
 
 class Shot {
 	double x, y;
-	int speed;
+	int speed = 4; // will be replaced with shotspeed 
+	double angle;
 	Shot_type shot_type;
 	Direction direction;
 
 	doodle::Image sprite;
 
 public:
-	Shot(double _x, double _y, Shot_type _shot_type, Direction _direction) {
-		x = _x;
-		y = _y;
-		shot_type = _shot_type;
-		direction = _direction;
-		shots_fired.push_back(this);
-	}
+	Shot(double _x, double _y, Shot_type _shot_type, Direction _direction);
+	void display();
 	void update_position();
 	void update_state(); 
 };
