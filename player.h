@@ -2,15 +2,17 @@
 #define PLAYER_H
 
 #include <doodle/doodle.hpp>
+#include "enum.h"
+#include "shot.h"
 
 class Player {
 	double x, y;
 	double x_acceleration;
-	float x_speed = 1.0;
+	double x_speed = 1.0;
 
 	double y_acceleration;
 	int jump_power = 4;
-	float y_friction = 0.8;
+	double y_friction = 0.8;
 	bool is_jumping = false;
 	bool is_touching_floor = true;
 
@@ -18,15 +20,16 @@ class Player {
 	bool is_hurt = false;
 
 	Shot_type shot_type = NORMAL;
+	Direction shot_direction = EAST;
 	int shot_timer = 100;
 
-	doodle::Image sprite;
+	doodle::Image sprite; // default sprite
+	Direction sprite_direction = EAST;
 
 public:
-	Player(double _x, double _y, doodle::Image _sprite) {
+	Player(double _x, double _y) {
 		x = _x;
 		y = _y;
-		sprite = _sprite;
 	}
 
 	void update_sprite();

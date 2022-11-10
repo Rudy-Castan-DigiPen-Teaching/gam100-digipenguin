@@ -1,4 +1,5 @@
 #include "player.h"
+#include "shot.h"
 #include <doodle/doodle.hpp>
 
 void Player::update_position() {
@@ -27,9 +28,20 @@ void Player::jump() {
 	this->is_jumping = false;
 }
 
-void Player::update_sprite() {
-
+void Player::shoot() {
+	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Z) {
+		new Shot(this->x, this->y, this->shot_type, this->shot_direction);
 	}
+}
+
+void Player::update_sprite() {
+	switch (this->sprite_direction) {
+	default:
+		// image_assets.placeholder 
+		// image_assets need to be declared in both player and main.cpp
+		//how to declare it only in main cpp and use it in other source files? 
+	}
+}
 
 void Player::collision_check() {
 

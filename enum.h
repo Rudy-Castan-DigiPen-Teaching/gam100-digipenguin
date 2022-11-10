@@ -8,4 +8,15 @@ enum Shot_type {
 	REFLECT
 };
 
+enum Direction {
+	NORTH,
+	NORTHEAST,
+	EAST,
+	SOUTHEAST,
+	SOUTH,
+	SOUTHWEST,
+	WEST,
+	NORTHWEST
+};
+
 #endif

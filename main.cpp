@@ -8,11 +8,16 @@
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   600
+//#define WINDOW_HEIGHT   600
 #define WINDOW_TITLE	"hamburger"
 
 Image_assets image_assets;
 
-Player player(WINDOW_WIDTH / 2, 50, image_assets.player_sprite_placeholder);
+Player player(WINDOW_WIDTH / 2, 50);
+Player* p_player = &player;
+
+std::vector<Shot*> shots_fired;
+
 
 int main() {
 	std::cout << "Penguin" << std::endl;
