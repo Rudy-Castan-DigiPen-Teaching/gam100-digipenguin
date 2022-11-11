@@ -37,7 +37,7 @@ void Enemy::apply_physics()
     if (this->enemy_alive == true)
     {
         this->enemy_x += enemy_speed * this->enemy_x_velocity * doodle::DeltaTime;
-        if ((this->enemy_x += enemy_speed * enemy_x_velocity) >= ENM_ROTATE_MAX)
+        if ((this->enemy_x += enemy_speed * this->enemy_x_velocity) >= ENM_ROTATE_MAX)
         {
             this->enemy_x_velocity = -1;
         }
