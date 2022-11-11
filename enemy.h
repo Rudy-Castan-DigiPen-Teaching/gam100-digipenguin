@@ -30,7 +30,7 @@ constexpr int enemy_speed = 1;
 struct Enemy
 {
     int enemy_x = WINDOW_WIDTH / 2;
-    int enemy_y = WINDOW_HEIGHT / 2;
+    int enemy_y =  50;
     int enemy_width = 25;
     int enemy_height = 50;
     int enemy_x_velocity = 1;
