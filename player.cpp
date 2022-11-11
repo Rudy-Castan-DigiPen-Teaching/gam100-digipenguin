@@ -109,12 +109,16 @@ void Player::update_position() {
 		this->jump();
 	}
 
-	if (array_move[0] == true) {
+	if (array_move[0] == true && this->x > 0) {
 		this->x -= playerSpeed;
 	}
 
-	if (array_move[1] == true) {
+	 else if (array_move[1] == true && this->x < 725) {
 		this->x += playerSpeed;
+	}
+
+	if (this->x >= 725) {
+		this->x = 725;
 	}
 
 	// gravity works
