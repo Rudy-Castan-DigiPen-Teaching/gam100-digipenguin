@@ -1,3 +1,11 @@
+﻿/*/--------------------------------------------------------------
+All content © 2022 DigiPen(USA) Corporation, all rights reserved.
+File Name : player.cpp
+Project: GAM100
+Author : Donghyeok Hahm(donghyeok.hahm)
+---------------------------------------------------------------- */
+
+
 #include "player.h"
 #include "shot.h"
 #include "enum.h"
@@ -12,13 +20,13 @@ Player::Player(double _x, double _y) {
 
 /*
 void Player::update_position() {
-	if (doodle::KeyIsPressed) { 
+	if (doodle::KeyIsPressed) {
 		if (doodle::Key == doodle::KeyboardButtons::Left) {
 			this->x -= this->x_speed;
 		}
 		if (doodle::Key == doodle::KeyboardButtons::Right) {
 			this->x += this->x_speed;
-		} 
+		}
 		if (doodle::Key == doodle::KeyboardButtons::Space) {
 			this->is_jumping = true;
 		}
@@ -26,10 +34,21 @@ void Player::update_position() {
 }
 */
 
+void Player::jump() {
+	if (this->standing == true) {
+		this->y_velocity -= playerJumpHeight;
+		//^^ if timer set finished -> y_velocity -= player_jump_height * dt(deltatime)?
+		this->standing = false;
+	}
+}
+
 void Player::update_position() {
 	//block height value (change to platform height)
 
-	if (this->y > doodle::Height - height * 2) {
+	std::cout << standing << std::endl;
+
+	if (this->y < -height) {
+
 		this->standing = true;
 	}
 	//make bool array
@@ -85,7 +104,7 @@ void Player::update_position() {
 
 	if (array_move[2] == true) { //jump
 
-		previousTime = currentTime;
+		//previousTime = currentTime;
 
 		this->jump();
 	}
@@ -102,7 +121,7 @@ void Player::update_position() {
 
 	if (standing == false) {
 		this->y_velocity += gravity * doodle::DeltaTime;
-		this->y += this->y_velocity;
+		this->y -= this->y_velocity;
 	}
 	else {
 		this->y_velocity = 0;
@@ -113,7 +132,7 @@ void Player::update_position() {
 void Player::update_shot_direction() {
 	if (doodle::KeyIsPressed) {
 		if (doodle::Key == doodle::KeyboardButtons::Left) {
-			this->shot_direction=Direction::WEST;
+			this->shot_direction = Direction::WEST;
 		}
 		if (doodle::Key == doodle::KeyboardButtons::Right) {
 			this->shot_direction = Direction::EAST;
@@ -127,13 +146,7 @@ void Player::update_shot_direction() {
 	}
 }
 
-void Player::jump() {
-	if (this->standing == true) {
-		this->y_velocity -= playerJumpHeight;
-		//^^ if timer set finished -> y_velocity -= player_jump_height * dt(deltatime)?
-		this->standing = false;
-	}
-}
+
 
 /*
 void Player::jump() {
@@ -171,7 +184,7 @@ void Player::display() {
 	doodle::push_settings(); // using sprite results in error? needs to be fixed 
 	doodle::set_fill_color(255);
 	doodle::set_outline_color(0);
-	doodle::draw_ellipse(this->x, this->y, this->width, this->height);
+	doodle::draw_rectangle(this->x, this->y + 100, this->width, this->height); ///added 100 to y, 11/10 22:43PM
 	doodle::pop_settings();
 	//doodle::draw_image(this->sprite, this->x, this->y);
 }

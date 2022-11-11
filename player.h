@@ -17,7 +17,7 @@ constexpr int playerColor = 0x2743D2ff;
 extern double previousTime;
 extern double currentTime;
 
-extern Player_sprites player_sprites;
+extern const Player_sprites player_sprites;
 
 class Player {
 	int width = 25;

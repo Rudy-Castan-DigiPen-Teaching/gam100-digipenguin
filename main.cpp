@@ -1,4 +1,4 @@
-// penguinz r koolest
+// penguinz r kool
 
 #include <iostream>
 #include <doodle/doodle.hpp>
@@ -9,21 +9,23 @@
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   600
-//#define WINDOW_HEIGHT   600
 #define WINDOW_TITLE	"hamburger"
 
 int tile_size = 25;
+int* p_tile_size = &tile_size;
 Map map = Map();
 
 Player player(WINDOW_WIDTH / 2, 50);
-//Player* p_player = &player;
+Player* p_player = &player;
 
 double previousTime = 0;
 double currentTime = doodle::ElapsedTime;
 
-Shot_sprites shot_sprites;
-Player_sprites player_sprites;
-Map_tiles map_tiles;
+const Shot_sprites shot_sprites;
+const Player_sprites player_sprites;
+const Map_tiles map_tiles;
+
+const Map_tiles* p_map_tiles = &map_tiles;
 
 std::vector<Shot*> shots_fired;
 
@@ -38,24 +40,22 @@ int main() {
 		doodle::update_window();
 		doodle::clear_background(255); // placeholder for bg (will be replaced with map())
 
+		doodle::draw_image(p_map_tiles->background, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 		for (int x = 0; x < map_render_area_width; x++) {
 			for (int y = 0; y < map_render_area_height; y++) {
-				int maptile = map.render_area[y][x];
-				if (maptile == 0) {
-					map.draw(map_tiles.tile, x, y, tile_size);
-				}
-				else {
-					map.draw(map_tiles.tile2, x, y, tile_size);
+				int* p_maptile = &map.render_area[y][x];
+				if (*p_maptile == 1) {
+					map.draw(p_map_tiles->tile2, x, y, *p_tile_size);
 				}
 			}
 		}
 
-		player.update_sprite();
-		player.update_position();
-		player.update_shot_direction();
-		player.shoot();
-		player.collision_check();
-		player.display();
+		p_player->update_sprite();
+		p_player->update_position();
+		p_player->update_shot_direction();
+		p_player->shoot();
+		p_player->collision_check();
+		p_player->display();
 
 		for (int i = 0; i < shots_fired.size(); i++) {
 			shots_fired[i]->display();

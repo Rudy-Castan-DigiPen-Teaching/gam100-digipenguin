@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: assets.h
+Project: GAM100
+Author: Hankyung Lee
+-----------------------------------------------------------------*/
+
 #if !defined(ASSETS_H)
 #define	ASSETS_H
 
@@ -16,6 +23,7 @@ struct Map_tiles {
 	const doodle::Image tile_1{ "assets/images/tile_1.png" };
 	const doodle::Image tile2{ "assets/images/tile2.png" };
 	const doodle::Image tile2_1{ "assets/images/tile2_1.png" };
+	const doodle::Image background{ "assets/images/background.png" };
 };
 
 #endif

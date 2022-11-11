@@ -9,13 +9,10 @@
 constexpr int map_render_area_width = 32;
 constexpr int map_render_area_height = 24;
 
-extern Map_tiles map_tiles;
+extern const Map_tiles map_tiles;
 
 class Map {
-
-
 public:
-
 	int render_area[map_render_area_height][map_render_area_width] = {
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -60,7 +57,7 @@ public:
 
 	}
 	void update();
-	void draw(doodle::Image img, int x, int y, int tile_size);
+	void draw(const doodle::Image &img, int &x, int &y, int &tile_size);
 };
 
 #endif

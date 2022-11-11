@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: shot.h
+Project: GAM100
+Author: Hankyung Lee
+-----------------------------------------------------------------*/
+
 #if !defined(SHOT_H)
 #define SHOT_H
 
@@ -5,7 +12,7 @@
 #include "enum.h"
 #include "assets.h"
 
-extern Shot_sprites shot_sprites;
+extern const Shot_sprites shot_sprites;
 
 class Shot;
 
