@@ -163,9 +163,9 @@ void Player::jump() {
 */
 
 void Player::shoot() {
-	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::X
-		&& int(doodle::ElapsedTime * 1000) % this->shot_timer == 0) {
-		new Shot(this->x, this->y, this->shot_type, this->shot_direction);
+	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::X) {
+		//&& int(doodle::ElapsedTime * 1000) % this->shot_timer == 0) {
+		new Shot(this->x, this->y + 150, this->shot_type, this->shot_direction);
 	}
 }
 
