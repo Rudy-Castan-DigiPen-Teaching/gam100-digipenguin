@@ -6,6 +6,7 @@
 #include "player.h"
 #include "map.h"
 #include "shot.h"
+#include "enemy.h"
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   600
@@ -17,6 +18,12 @@ Map map = Map();
 
 Player player(WINDOW_WIDTH / 2, 50);
 Player* p_player = &player;
+
+Enemy enemy;
+Enemy* p_enemy = &enemy;
+
+
+
 
 double previousTime = 0;
 double currentTime = doodle::ElapsedTime;
@@ -56,6 +63,11 @@ int main() {
 		p_player->shoot();
 		p_player->collision_check();
 		p_player->display();
+
+		p_enemy->draw();
+		p_enemy->check_alive();
+		p_enemy->apply_physics();
+
 
 		for (int i = 0; i < shots_fired.size(); i++) {
 			shots_fired[i]->display();

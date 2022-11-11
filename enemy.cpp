@@ -39,10 +39,10 @@ void Enemy::apply_physics()
             this->enemy_x_velocity = 1;
         }
 
-        if ((bullet_x > this->enemy_x) && (bullet_x < enemy_x + this->enemy_width) && (bullet_y > this->enemy_y) && (bullet_y < this->enemy_y + this->enemy_height))
+        /*if ((bullet_x > this->enemy_x) && (bullet_x < enemy_x + this->enemy_width) && (bullet_y > this->enemy_y) && (bullet_y < this->enemy_y + this->enemy_height))
         {
             this->enemy_HP--;
-        }
+        }*/
     }
     else if (this->enemy_alive == false)
     {
