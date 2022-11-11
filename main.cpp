@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: main.cpp
+Project: GAM100
+Author: Hankyung Lee, Bada Kim, Minchan Cho, Donghyeok Hahm
+-----------------------------------------------------------------*/
+
 // penguinz r kool
 
 #include <iostream>

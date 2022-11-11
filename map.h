@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: map.h
+Project: GAM100
+Author: Bada Kim
+-----------------------------------------------------------------*/
+
 #if !defined(MAP_H)
 #define MAP_H
 

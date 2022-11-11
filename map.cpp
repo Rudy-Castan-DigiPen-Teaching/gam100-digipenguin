@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: map.cpp
+Project: GAM100
+Author: Bada Kim
+-----------------------------------------------------------------*/
+
 #include <iostream>
 #include <fstream> 
 #include <doodle/doodle.hpp>

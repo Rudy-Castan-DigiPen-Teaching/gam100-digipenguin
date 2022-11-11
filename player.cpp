@@ -2,7 +2,7 @@
 All content © 2022 DigiPen(USA) Corporation, all rights reserved.
 File Name : player.cpp
 Project: GAM100
-Author : Donghyeok Hahm(donghyeok.hahm)
+Author : Donghyeok Hahm(donghyeok.hahm), Hnakyung Lee
 ---------------------------------------------------------------- */
 
 
@@ -163,7 +163,7 @@ void Player::jump() {
 */
 
 void Player::shoot() {
-	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Z
+	if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::X
 		&& int(doodle::ElapsedTime * 1000) % this->shot_timer == 0) {
 		new Shot(this->x, this->y, this->shot_type, this->shot_direction);
 	}

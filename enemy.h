@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: enemy.h
+Project: GAM100
+Author: Minchan Cho
+-----------------------------------------------------------------*/
+
 #ifndef ENEMY_H
 #define ENEMY_H
 
