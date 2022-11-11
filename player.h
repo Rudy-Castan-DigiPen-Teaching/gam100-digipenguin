@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: player.h
+Project: GAM100
+Author: Donghyeok Hahm, Hankyung Lee
+-----------------------------------------------------------------*/
+
 #if !defined(PLAYER_H)
 #define PLAYER_H
 

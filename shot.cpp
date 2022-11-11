@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: shot.cpp
+Project: GAM100
+Author: Hankyung Lee
+-----------------------------------------------------------------*/
+
 #include <doodle/doodle.hpp>
 #include <cmath>
 #include "shot.h"

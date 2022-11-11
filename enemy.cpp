@@ -1,3 +1,10 @@
+﻿/*--------------------------------------------------------------
+All content © 2022 DigiPen (USA) Corporation, all rights reserved.
+File Name: enemy.cpp
+Project: GAM100
+Author: Minchan Cho
+-----------------------------------------------------------------*/
+
 #include "enemy.h"
 
 void Enemy::draw()
