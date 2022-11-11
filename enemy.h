@@ -22,7 +22,7 @@ Author: Minchan Cho
 //int bullet_x = 0;
 //int bullet_y = 0;
 constexpr int enemy_color = 0xdf4b40ff;
-constexpr int defeat_enemy_color = 0xdffffffff;
+//constexpr int defeat_enemy_color = 0xdffffffff;
 constexpr int enemy_speed = 1;
 
 

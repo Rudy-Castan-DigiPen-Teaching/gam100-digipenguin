@@ -53,6 +53,8 @@ void Enemy::apply_physics()
     }
     else if (this->enemy_alive == false)
     {
-        doodle::set_fill_color(doodle::HexColor{ defeat_enemy_color });
+        //doodle::set_fill_color(doodle::HexColor{ defeat_enemy_color });
+        doodle::no_fill();
+        //doodle::no_outline();
     }
 }
