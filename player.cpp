@@ -12,6 +12,10 @@ Author : Donghyeok Hahm(donghyeok.hahm), Hnakyung Lee
 #include <iostream>
 #include <doodle/doodle.hpp>
 
+
+//make bool array
+bool array_move[3] = { false, false, false }; // { left, right, jump(Z key)}
+
 Player::Player(double _x, double _y) {
 	this->x = _x;
 	this->y = _y;
@@ -35,6 +39,7 @@ void Player::update_position() {
 */
 
 void Player::jump() {
+
 	if (this->standing == true) {
 		this->y_velocity -= playerJumpHeight;
 		//^^ if timer set finished -> y_velocity -= player_jump_height * dt(deltatime)?
@@ -45,14 +50,14 @@ void Player::jump() {
 void Player::update_position() {
 	//block height value (change to platform height)
 
-	std::cout << standing << std::endl;
+	//std::cout << standing << std::endl;
 
 	if (this->y < -height) {
 
 		this->standing = true;
 	}
-	//make bool array
-	bool array_move[3] = { false, false, false }; // { left, right, jump(Z key)}
+
+
 
 	if (!doodle::KeyIsPressed) {
 
@@ -60,65 +65,72 @@ void Player::update_position() {
 		array_move[1] = false;
 		array_move[2] = false;
 
-	}
+		std::cout << "clear" << std::endl;
 
-	if (doodle::KeyIsPressed == true && doodle::Key == doodle::KeyboardButtons::Left) {
-
-		array_move[0] = true;
-		std::cout << "Left" << std::endl;
-	}
-
-	if (doodle::KeyIsPressed == true && doodle::Key == doodle::KeyboardButtons::Right) {
-
-		array_move[1] = true;
-		std::cout << "Right" << std::endl;
-	}
-
-	if (doodle::KeyIsPressed == true && doodle::Key == doodle::KeyboardButtons::Z) {
-
-		array_move[2] = true;
-		std::cout << "Zump" << std::endl;
 	}
 
 
+	else if (true) {
 
-	// key settings (bool array logic)
+		if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Left) {
+			array_move[0] = true;
+			std::cout << "Left" << std::endl;
+		}
 
+		else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Right) {
+			array_move[1] = true;
+			std::cout << "Right" << std::endl;
+		}
 
+		else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Z) {
+			array_move[2] = true;
+			std::cout << "Zump" << std::endl;
+		}
+	}
 
-	/*
-
-	if (array_move[2] == true && array_move[0] == true) { //left jump
+	if (array_move[0] == true && array_move[2] == true) { //left jump
 
 		jump();
-		x -= playerSpeed;
+		this->x -= playerSpeed;
+
+		std::cout << "left jumpppppppppppppppppppppppppppppppppppppppppppp" << std::endl;
 	}
 
 	else if (array_move[2] == true && array_move[1] == true) { //right jump
 
 		jump();
-		x += playerSpeed;
+		this->x += playerSpeed;
+
+		std::cout << "right jumpppppppppppppppppppppppppppppppppppppppppppp" << std::endl;
 	}
 
-	*/
 
-	if (array_move[2] == true) { //jump
+
+
+	else if (array_move[0] == true && this->x > 0) {
+		this->x -= playerSpeed;
+	}
+
+	else if (array_move[1] == true && this->x < 725) {
+		this->x += playerSpeed;
+	}
+
+
+	else if (array_move[2] == true) { //jump
 
 		//previousTime = currentTime;
 
 		this->jump();
 	}
 
-	if (array_move[0] == true && this->x > 0) {
-		this->x -= playerSpeed;
-	}
 
-	 else if (array_move[1] == true && this->x < 725) {
-		this->x += playerSpeed;
-	}
 
 	if (this->x >= 725) {
 		this->x = 725;
+	}
+
+	if (this->x <= 0) {
+		this->x = 0;
 	}
 
 	// gravity works
