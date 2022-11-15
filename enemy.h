@@ -12,7 +12,6 @@ Author: Minchan Cho
 #include <string>
 #include <cctype>
 
-#define WINDOW_TITLE "enemy test"
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 #define ENM_ROTATE_MAX doodle::Width - 100
@@ -21,14 +20,14 @@ Author: Minchan Cho
 
 //int bullet_x = 0;
 //int bullet_y = 0;
-constexpr int enemy_color = 0xdf4b40ff;
 //constexpr int defeat_enemy_color = 0xdffffffff;
-constexpr int enemy_speed = 1;
 
+class Player;
+class Shot;
 
-
-struct Enemy
+class Enemy
 {
+    int enemy_color = 0xdf4b40ff;
     int enemy_x = WINDOW_WIDTH / 2;
     int enemy_y =  50;
     int enemy_width = 25;
@@ -36,12 +35,20 @@ struct Enemy
     int enemy_x_velocity = 1;
     int enemy_HP = 10;
     bool enemy_alive = false;
+    int enemy_speed = 1;
+    //class Shot* m_pA_shot;
 
+public:
     void draw();
     void check_alive();
     void apply_physics();
-    //double get_player();
-    //double get_bullet();
+    //void get_player(Player* player);
+    //void get_shot(Shot* shot);
+
+
+
+  /*  void Init(class Shot* shot);*/
+
 };
 
 #endif

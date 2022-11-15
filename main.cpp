@@ -74,7 +74,7 @@ int main() {
 		p_enemy->draw();
 		p_enemy->check_alive();
 		p_enemy->apply_physics();
-
+	/*	p_enemy->Init();*/
 
 		for (int i = 0; i < shots_fired.size(); i++) {
 			shots_fired[i]->display();

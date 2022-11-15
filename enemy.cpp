@@ -9,18 +9,36 @@ Author: Minchan Cho
 #include "player.h"
 
 
-
 void Enemy::draw()
 {
     doodle::draw_rectangle(this->enemy_x, this->enemy_y, this->enemy_width, this->enemy_height);
     doodle::set_fill_color(doodle::HexColor{ enemy_color });
 }
 
-//double Enemy::get_player(Player* player) 
+//void Enemy::get_player(Player* player) 
 //{
-//    player->x;
+//    player->x = _x;
 //    player->y;
 //}
+//void Shot::get_shot(Shot* shot)
+//{
+//    shot->x;
+//    shot->y;
+//}
+
+
+//void Enemy::Init(class Shot* shot)
+//{
+//    m_pA_shot = shot;
+//    m_pA_shot->x;
+//    m_pA_shot->y; 
+//
+//    if ((m_pA_shot->x > this->enemy_x) && (m_pA_shot->x < enemy_x + this->enemy_width) && (m_pA_shot->y > this->enemy_y) && (m_pA_shot->y < this->enemy_y + this->enemy_height))
+//    {
+//        this->enemy_HP--;
+//    }
+//}
+
 
 void Enemy::check_alive()
 {
@@ -36,6 +54,8 @@ void Enemy::check_alive()
 
 void Enemy::apply_physics()
 {
+
+
     if (!doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::H)
     {
         this->enemy_HP--;
@@ -55,7 +75,6 @@ void Enemy::apply_physics()
             this->enemy_x_velocity = 1;
         }
 
-      
 
 
         /*if ((bullet_x > this->enemy_x) && (bullet_x < enemy_x + this->enemy_width) && (bullet_y > this->enemy_y) && (bullet_y < this->enemy_y + this->enemy_height))
@@ -70,3 +89,5 @@ void Enemy::apply_physics()
         //doodle::no_outline();
     }
 }
+
+
