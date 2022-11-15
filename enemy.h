@@ -40,6 +40,8 @@ struct Enemy
     void draw();
     void check_alive();
     void apply_physics();
+    //double get_player();
+    //double get_bullet();
 };
 
 #endif

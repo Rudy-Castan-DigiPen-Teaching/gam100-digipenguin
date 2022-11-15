@@ -6,12 +6,21 @@ Author: Minchan Cho
 -----------------------------------------------------------------*/
 
 #include "enemy.h"
+#include "player.h"
+
+
 
 void Enemy::draw()
 {
     doodle::draw_rectangle(this->enemy_x, this->enemy_y, this->enemy_width, this->enemy_height);
     doodle::set_fill_color(doodle::HexColor{ enemy_color });
 }
+
+//double Enemy::get_player(Player* player) 
+//{
+//    player->x;
+//    player->y;
+//}
 
 void Enemy::check_alive()
 {
@@ -45,6 +54,9 @@ void Enemy::apply_physics()
         {
             this->enemy_x_velocity = 1;
         }
+
+      
+
 
         /*if ((bullet_x > this->enemy_x) && (bullet_x < enemy_x + this->enemy_width) && (bullet_y > this->enemy_y) && (bullet_y < this->enemy_y + this->enemy_height))
         {
