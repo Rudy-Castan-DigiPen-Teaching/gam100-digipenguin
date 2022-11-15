@@ -8,9 +8,6 @@ Author: Hankyung Lee, Bada Kim, Minchan Cho, Donghyeok Hahm
 // penguinz r kool
 
 #include <iostream>
-
-#include <fstream>
-
 #include <doodle/doodle.hpp>
 #include "assets.h"
 #include "player.h"
@@ -20,7 +17,7 @@ Author: Hankyung Lee, Bada Kim, Minchan Cho, Donghyeok Hahm
 
 #define WINDOW_WIDTH    800
 #define WINDOW_HEIGHT   600
-#define WINDOW_TITLE	"nemotokki"
+#define WINDOW_TITLE	"hamburger"
 
 int tile_size = 25;
 int* p_tile_size = &tile_size;
@@ -31,6 +28,8 @@ Player* p_player = &player;
 
 Enemy enemy;
 Enemy* p_enemy = &enemy;
+
+
 
 
 double previousTime = 0;
@@ -56,62 +55,32 @@ int main() {
 		doodle::clear_background(255); // placeholder for bg (will be replaced with map())
 
 		doodle::draw_image(p_map_tiles->background, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-		
-		std::ifstream maptilearray("assets/scripts/map0.txt");
-
-		int a[32 * 24];
-
-		for (int i = 0; i < 32 * 24; i++) {
-
-			for (int x = 0; x < 24; x++) {
-
-				for (int y = 0; y < 32; y++) {
-
-					maptilearray >> a[i];
-
-
-					switch (a[i])
-					{
-					case 1:
-						map.draw(p_map_tiles->tile2, y, x, *p_tile_size);
-						break;
-					}
-
-					//int* p_maptile = &map.render_area[y][x];
-					//if (*p_maptile == 1) {
-					//	map.draw(p_map_tiles->tile2, x, y, *p_tile_size);
-					//}
-
+		for (int x = 0; x < map_render_area_width; x++) {
+			for (int y = 0; y < map_render_area_height; y++) {
+				int* p_maptile = &map.render_area[y][x];
+				if (*p_maptile == 1) {
+					map.draw(p_map_tiles->tile2, x, y, *p_tile_size);
 				}
-
 			}
-
 		}
 
-		maptilearray.close();
+		p_player->update_sprite();
+		p_player->update_position();
+		p_player->update_shot_direction();
+		p_player->shoot();
+		p_player->collision_check();
+		p_player->display();
 
-		//p_player->update_sprite();
-		//p_player->update_position();
-		//p_player->update_shot_direction();
-		//p_player->shoot();
-		//p_player->collision_check();
-		//p_player->display();
-
-		//p_enemy->draw();
-		//p_enemy->check_alive();
-		//p_enemy->apply_physics();
+		p_enemy->draw();
+		p_enemy->check_alive();
+		p_enemy->apply_physics();
 
 
-		//for (int i = 0; i < shots_fired.size(); i++) {
-		//	shots_fired[i]->display();
-		//	shots_fired[i]->update_position();
-		//	shots_fired[i]->update_state();
-		//}
-
-
-		
-
-
+		for (int i = 0; i < shots_fired.size(); i++) {
+			shots_fired[i]->display();
+			shots_fired[i]->update_position();
+			shots_fired[i]->update_state();
+		}
 	}
 
 	return 0;
