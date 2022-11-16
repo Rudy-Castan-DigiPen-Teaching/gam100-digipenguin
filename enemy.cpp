@@ -79,6 +79,12 @@ void Enemy::apply_physics()
             this->enemy_x_velocity = 1;
         }
 
+        //check hitbox
+        // 
+        if ((doodle::get_mouse_x() > this->enemy_x) && (doodle::get_mouse_x() < enemy_x + this->enemy_width) && (doodle::get_mouse_y() > this->enemy_y) && (doodle::get_mouse_y() < this->enemy_y + this->enemy_height))
+        {
+            this->enemy_HP--;
+        }
 
         //hit by bullet
         if ((get_bullet_x > this->enemy_x) && (get_bullet_x < enemy_x + this->enemy_width) && (get_bullet_y > this->enemy_y) && (get_bullet_y < this->enemy_y + this->enemy_height))
