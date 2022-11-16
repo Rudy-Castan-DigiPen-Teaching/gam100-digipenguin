@@ -7,6 +7,7 @@ Author: Minchan Cho
 
 #include "enemy.h"
 #include "player.h"
+#include "shot.h"
 
 
 void Enemy::draw()
@@ -20,11 +21,13 @@ void Enemy::draw()
 //    player->x = _x;
 //    player->y;
 //}
-//void Shot::get_shot(Shot* shot)
-//{
-//    shot->x;
-//    shot->y;
-//}
+
+
+void Enemy::get_shot(Shot* shot)
+{
+    get_bullet_x = shot->x;
+    get_bullet_y = shot->y;
+}
 
 
 //void Enemy::Init(class Shot* shot)
@@ -56,13 +59,14 @@ void Enemy::apply_physics()
 {
 
 
+
     if (!doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::H)
     {
         this->enemy_HP--;
     }//HP test
 
 
-
+    // Rotate
     if (this->enemy_alive == true)
     {
         this->enemy_x += enemy_speed * this->enemy_x_velocity * doodle::DeltaTime;
@@ -76,13 +80,18 @@ void Enemy::apply_physics()
         }
 
 
-
-        /*if ((bullet_x > this->enemy_x) && (bullet_x < enemy_x + this->enemy_width) && (bullet_y > this->enemy_y) && (bullet_y < this->enemy_y + this->enemy_height))
+        //hit by bullet
+        if ((get_bullet_x > this->enemy_x) && (get_bullet_x < enemy_x + this->enemy_width) && (get_bullet_y > this->enemy_y) && (get_bullet_y < this->enemy_y + this->enemy_height))
         {
             this->enemy_HP--;
-        }*/
+        }
+
     }
-    else if (this->enemy_alive == false)
+
+
+
+    //enemy defeat
+    if (this->enemy_alive == false)
     {
         //doodle::set_fill_color(doodle::HexColor{ defeat_enemy_color });
         doodle::no_fill();

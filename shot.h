@@ -19,7 +19,7 @@ class Shot;
 extern std::vector<Shot*> shots_fired;
 
 class Shot {
-	double x, y;
+	
 	int speed = 4; // will be replaced with shotspeed 
 	double angle;
 	Shot_type shot_type;
@@ -28,6 +28,7 @@ class Shot {
 	doodle::Image sprite;
 
 public:
+	double x, y;
 	Shot(double _x, double _y, Shot_type _shot_type, Direction _direction);
 	void display();
 	void update_position();
