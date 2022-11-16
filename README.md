@@ -20,6 +20,13 @@
 - [ ] (non-priority) Different shot types & functionality
 - [ ] Deletion after collision with enemy / wall / outside of screen (map change) 
 
+### Map
+- [ ] Read in from external file
+- [ ] Lighter, less laggier
+
+### General
+- [ ] Better input recognition (debouncing, simultaneous multi-key input) 
+
 ---
 
 ### Camera (non-priority)
