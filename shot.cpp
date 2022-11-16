@@ -34,6 +34,10 @@ void Shot::update_position() {
 	{
 		this->x = 750;
 	}
+	if (this->x <= 50)
+	{
+		this->x = 50;
+	}
 }
 
 void Shot::update_state() {
