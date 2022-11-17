@@ -4,7 +4,7 @@ File Name: enemy.cpp
 Project: GAM100
 Author: Minchan Cho
 -----------------------------------------------------------------*/
-
+#include <iostream>
 #include "enemy.h"
 #include "player.h"
 #include "shot.h"
@@ -16,10 +16,12 @@ void Enemy::draw()
     doodle::set_fill_color(doodle::HexColor{ enemy_color });
 }
 
-void Enemy::get_player(Player* player) 
+void Enemy::get_player() 
 {
     get_player_x = player->x;
     get_player_y = player->y;
+
+
 }
 
 
@@ -57,6 +59,8 @@ void Enemy::check_alive()
 
 void Enemy::apply_physics()
 {
+    int check_x_sense = this->enemy_x + enemy_sense;
+    int check_minuse_x_sense = this->enemy_x - enemy_sense;
 
 
 
@@ -69,34 +73,52 @@ void Enemy::apply_physics()
     // Rotate
     if (this->enemy_alive == true)
     {
-        this->enemy_x += enemy_speed * this->enemy_x_velocity * doodle::DeltaTime;
-        /*this->enemy_y += enemy_speed * this->enemy_y_velocity * doodle::DeltaTime;*/
-        if ((this->enemy_x += enemy_speed * this->enemy_x_velocity) >= ENM_ROTATE_MAX)
+
+        this->enemy_x += enemy_speed * this->x_velocity * doodle::DeltaTime;
+        this->enemy_y += enemy_speed * this->y_velocity * doodle::DeltaTime;
+
+        //if ((this->enemy_x += enemy_speed * this->x_velocity) >= ENM_ROTATE_MAX)
+        //{
+        //    this->x_velocity = -1;
+        //}
+        //if ((this->enemy_x += enemy_speed * this->x_velocity) <= ENM_ROTATE_MIN)
+        //{
+        //    this->x_velocity = 1;
+        //}
+
+
+       /* follow player*/
+
+        if ((this->enemy_x += enemy_speed * this->x_velocity) >= get_player_x)
         {
-            this->enemy_x_velocity = -1;
+            this->x_velocity = -1;
         }
-        if ((this->enemy_x += enemy_speed * this->enemy_x_velocity) <= ENM_ROTATE_MIN)
+        else if ((this->enemy_x += enemy_speed * this->x_velocity) <= get_player_x)
         {
-            this->enemy_x_velocity = 1;
+            this->x_velocity = 1;
         }
 
-        //follow enemy
-        // 
-        //if(get_player_x > this->enemy_x - enemy_sense)
+        //if(get_player_x <= this->enemy_x - enemy_sense)
         //{
-        //    this->enemy_x_velocity = -1;
+        //    this->x_velocity = -1;
         //}
-        //if (get_player_x < enemy_x + this->enemy_width + enemy_sense)
+        //if (get_player_x >= enemy_x + this->enemy_width + enemy_sense)
         //{
-        //    this->enemy_x_velocity = 1;
+        //    this->x_velocity = 1;
         //}
+
+
+        //this->enemy_x = this->player->x;
+        //this->enemy_y = this->player->y;
+
+
         //if (get_player_y > this->enemy_y - enemy_sense)
         //{
-        //    this->enemy_y_velocity = 1;
+        //    this->y_velocity = -1;
         //}
         //if(get_player_y < this->enemy_y + this->enemy_height + enemy_sense)
         //{
-        //    this->enemy_y_velocity = -1;
+        //    this->y_velocity = 1;
         //}
 
 

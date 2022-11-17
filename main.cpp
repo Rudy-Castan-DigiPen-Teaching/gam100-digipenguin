@@ -44,6 +44,7 @@ const Map_tiles* p_map_tiles = &map_tiles;
 std::vector<Shot*> shots_fired;
 
 int main() {
+	enemy.player = p_player;
 	std::cout << "Penguin" << std::endl;
 
 	doodle::create_window(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -74,6 +75,7 @@ int main() {
 		p_enemy->draw();
 		p_enemy->check_alive();
 		p_enemy->apply_physics();
+		p_enemy->get_player();
 	/*	p_enemy->Init();*/
 
 		for (int i = 0; i < shots_fired.size(); i++) {

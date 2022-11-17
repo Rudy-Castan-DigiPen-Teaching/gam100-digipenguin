@@ -28,13 +28,13 @@ class Shot;
 class Enemy
 {
     int enemy_color = 0xdf4b40ff;
-    int enemy_x = WINDOW_WIDTH / 2;
-    int enemy_y =  70;
+    int enemy_x = WINDOW_WIDTH / 3;
+    int enemy_y =  50;
     int enemy_width = 25;
     int enemy_height = 50;
     int enemy_sense = 100;
-    int enemy_x_velocity = 1;
-    int enemy_y_velocity = 1;
+    int x_velocity = 1;
+    int y_velocity = 1;
     int enemy_HP = 10;
     int get_bullet_x ;
     int get_bullet_y;
@@ -45,10 +45,13 @@ class Enemy
     //class Shot* m_pA_shot;
 
 public:
+
+    Player* player = nullptr;
+
     void draw();
     void check_alive();
     void apply_physics();
-    void get_player(Player* player);
+    void get_player();
     void get_shot(Shot* shot);
 
 
