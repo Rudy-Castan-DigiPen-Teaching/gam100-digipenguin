@@ -16,11 +16,11 @@ void Enemy::draw()
     doodle::set_fill_color(doodle::HexColor{ enemy_color });
 }
 
-//void Enemy::get_player(Player* player) 
-//{
-//    player->x = _x;
-//    player->y;
-//}
+void Enemy::get_player(Player* player) 
+{
+    get_player_x = player->x;
+    get_player_y = player->y;
+}
 
 
 void Enemy::get_shot(Shot* shot)
@@ -70,6 +70,7 @@ void Enemy::apply_physics()
     if (this->enemy_alive == true)
     {
         this->enemy_x += enemy_speed * this->enemy_x_velocity * doodle::DeltaTime;
+        /*this->enemy_y += enemy_speed * this->enemy_y_velocity * doodle::DeltaTime;*/
         if ((this->enemy_x += enemy_speed * this->enemy_x_velocity) >= ENM_ROTATE_MAX)
         {
             this->enemy_x_velocity = -1;
@@ -78,6 +79,26 @@ void Enemy::apply_physics()
         {
             this->enemy_x_velocity = 1;
         }
+
+        //follow enemy
+        // 
+        //if(get_player_x > this->enemy_x - enemy_sense)
+        //{
+        //    this->enemy_x_velocity = -1;
+        //}
+        //if (get_player_x < enemy_x + this->enemy_width + enemy_sense)
+        //{
+        //    this->enemy_x_velocity = 1;
+        //}
+        //if (get_player_y > this->enemy_y - enemy_sense)
+        //{
+        //    this->enemy_y_velocity = 1;
+        //}
+        //if(get_player_y < this->enemy_y + this->enemy_height + enemy_sense)
+        //{
+        //    this->enemy_y_velocity = -1;
+        //}
+
 
         //check hitbox
         // 

@@ -30,7 +30,7 @@ class Player {
 	int width = 25;
 	int height = 50;
 
-	double x, y;
+
 	double x_acceleration;
 	double x_speed = 1.0;
 
@@ -53,6 +53,7 @@ class Player {
 	Direction sprite_direction = EAST;
 
 public:
+	double x, y;
 	Player(double _x, double _y);
 	void update_sprite();
 	void update_position();

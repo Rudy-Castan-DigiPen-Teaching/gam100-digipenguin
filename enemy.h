@@ -32,10 +32,14 @@ class Enemy
     int enemy_y =  70;
     int enemy_width = 25;
     int enemy_height = 50;
+    int enemy_sense = 100;
     int enemy_x_velocity = 1;
+    int enemy_y_velocity = 1;
     int enemy_HP = 10;
     int get_bullet_x ;
     int get_bullet_y;
+    int get_player_x;
+    int get_player_y;
     bool enemy_alive = false;
     int enemy_speed = 1;
     //class Shot* m_pA_shot;
@@ -44,7 +48,7 @@ public:
     void draw();
     void check_alive();
     void apply_physics();
-    //void get_player(Player* player);
+    void get_player(Player* player);
     void get_shot(Shot* shot);
 
 
