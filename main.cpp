@@ -8,6 +8,8 @@ Author: Hankyung Lee, Bada Kim, Minchan Cho, Donghyeok Hahm
 // penguinz r kool
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <doodle/doodle.hpp>
 #include "assets.h"
 #include "player.h"
@@ -30,8 +32,6 @@ Enemy enemy;
 Enemy* p_enemy = &enemy;
 
 
-
-
 double previousTime = 0;
 double currentTime = doodle::ElapsedTime;
 
@@ -51,19 +51,16 @@ int main() {
 	doodle::set_window_title(WINDOW_TITLE);
 	doodle::set_frame_of_reference(doodle::FrameOfReference::RightHanded_OriginBottomLeft);
 
+	map.update();
+
 	while (!doodle::is_window_closed()) {
 		doodle::update_window();
 		doodle::clear_background(255); // placeholder for bg (will be replaced with map())
 
 		doodle::draw_image(p_map_tiles->background, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-		for (int x = 0; x < map_render_area_width; x++) {
-			for (int y = 0; y < map_render_area_height; y++) {
-				int* p_maptile = &map.render_area[y][x];
-				if (*p_maptile == 1) {
-					map.draw(p_map_tiles->tile2, x, y, *p_tile_size);
-				}
-			}
-		}
+
+		map.draw(p_map_tiles->tile2, *p_tile_size);
+
 
 		p_player->update_sprite();
 		p_player->update_position();

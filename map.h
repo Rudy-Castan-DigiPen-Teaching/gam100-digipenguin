@@ -19,6 +19,9 @@ constexpr int map_render_area_height = 24;
 extern const Map_tiles map_tiles;
 
 class Map {
+	std::vector<std::vector<int>> world_map;
+	int mapdata = 0;
+
 public:
 	int render_area[map_render_area_height][map_render_area_width] = {
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -64,7 +67,7 @@ public:
 
 	}
 	void update();
-	void draw(const doodle::Image &img, int &x, int &y, int &tile_size);
+	void draw(const doodle::Image &img, int &tile_size);
 };
 
 #endif
