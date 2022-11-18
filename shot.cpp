@@ -34,9 +34,9 @@ void Shot::update_position() {
 	{
 		this->x = 750;
 	}
-	if (this->x <= 50)
+	if (this->x <= 25)
 	{
-		this->x = 50;
+		this->x = 25;
 	}
 }
 
