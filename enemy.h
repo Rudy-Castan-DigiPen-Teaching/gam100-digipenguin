@@ -32,7 +32,7 @@ class Enemy
     int enemy_y =  50;
     int enemy_width = 25;
     int enemy_height = 50;
-    int enemy_sense = 100;
+    int enemy_sense = 225;
     int x_velocity = 1;
     int y_velocity = 1;
     int enemy_HP = 10;

@@ -14,6 +14,10 @@ void Enemy::draw()
 {
     doodle::draw_rectangle(this->enemy_x, this->enemy_y, this->enemy_width, this->enemy_height);
     doodle::set_fill_color(doodle::HexColor{ enemy_color });
+    doodle::push_settings();
+    doodle::no_fill();
+    doodle::draw_rectangle(this->enemy_x - 100, this->enemy_y - 87, this->enemy_sense, this->enemy_sense);
+    doodle::pop_settings();
 }
 
 void Enemy::get_player() 
