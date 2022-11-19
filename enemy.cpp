@@ -16,7 +16,7 @@ void Enemy::draw()
     doodle::set_fill_color(doodle::HexColor{ enemy_color });
     doodle::push_settings();
     doodle::no_fill();
-    doodle::draw_rectangle(this->enemy_x - 100, this->enemy_y - 87, this->enemy_sense, this->enemy_sense);
+    doodle::draw_rectangle(this->enemy_x - 100, this->enemy_y - 87, 225, 225);
     doodle::pop_settings();
 }
 
@@ -78,28 +78,28 @@ void Enemy::apply_physics()
     if (this->enemy_alive == true)
     {
 
-        this->enemy_x += enemy_speed * this->x_velocity * doodle::DeltaTime;
-        this->enemy_y += enemy_speed * this->y_velocity * doodle::DeltaTime;
+        //this->enemy_x += enemy_speed * this->x_velocity;
+        //this->enemy_y += enemy_speed * this->y_velocity;
 
-        //if ((this->enemy_x += enemy_speed * this->x_velocity) >= ENM_ROTATE_MAX)
+        //if (this->enemy_x >= ENM_ROTATE_MAX)
         //{
-        //    this->x_velocity = -1;
+        //    enemy_x -= enemy_speed * this->x_velocity;
         //}
-        //if ((this->enemy_x += enemy_speed * this->x_velocity) <= ENM_ROTATE_MIN)
+        //else if (this->enemy_x <= ENM_ROTATE_MIN)
         //{
-        //    this->x_velocity = 1;
+        //    enemy_x += enemy_speed * this->x_velocity;
         //}
 
 
        /* follow player*/
 
-        if ((this->enemy_x += enemy_speed * this->x_velocity) >= get_player_x)
+        if (this->enemy_x >= get_player_x && this-> enemy_x - enemy_sense <= get_player_x + 25)
         {
-            this->x_velocity = -1;
+            enemy_x -= enemy_speed;
         }
-        else if ((this->enemy_x += enemy_speed * this->x_velocity) <= get_player_x)
+        if (this->enemy_x <= get_player_x && this-> enemy_x +enemy_width + enemy_sense >= get_player_x)
         {
-            this->x_velocity = 1;
+            enemy_x += enemy_speed;
         }
 
         //if(get_player_x <= this->enemy_x - enemy_sense)
