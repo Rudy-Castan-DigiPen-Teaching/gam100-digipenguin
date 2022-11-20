@@ -204,6 +204,12 @@ void Player::shoot() {
 		//&& int(doodle::ElapsedTime * 1000) % this->shot_timer == 0) {
 		new Shot(this->x, this->y + 150, this->shot_type, this->shot_direction);
 	}
+	//if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::X) {
+	//	if (int(doodle::ElapsedTime * 50) % this->shot_timer == 0)
+	//	{
+	//		new Shot(this->x, this->y + 150, this->shot_type, this->shot_direction);
+	//	}
+	//}
 }
 
 void Player::update_sprite() {
