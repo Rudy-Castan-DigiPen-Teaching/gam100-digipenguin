@@ -29,7 +29,7 @@ void Enemy::get_player()
 }
 
 
-void Enemy::get_shot(Shot* shot)
+void Enemy::get_shot()
 {
     get_bullet_x = shot->x;
     get_bullet_y = shot->y;
@@ -63,9 +63,6 @@ void Enemy::check_alive()
 
 void Enemy::apply_physics()
 {
-    int check_x_sense = this->enemy_x + enemy_sense;
-    int check_minuse_x_sense = this->enemy_x - enemy_sense;
-
 
 
     if (!doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::H)
@@ -80,11 +77,11 @@ void Enemy::apply_physics()
 
         //if (this->enemy_x >= ENM_ROTATE_MAX)
         //{
-        //    enemy_x -= enemy_speed * this->x_velocity;
+        //    enemy_x -= enemy_speed;
         //}
         //else if (this->enemy_x <= ENM_ROTATE_MIN)
         //{
-        //    enemy_x += enemy_speed * this->x_velocity;
+        //    enemy_x += enemy_speed;
         //}
 
 
@@ -105,20 +102,6 @@ void Enemy::apply_physics()
             }
         }
 
-        //if (this->enemy_x >= doodle::get_mouse_x() && this->enemy_x - enemy_sense <= doodle::get_mouse_x())
-        //{
-        //    if (this->enemy_y + enemy_height + 87 >= doodle::get_mouse_y() && this->enemy_y - 87 <= doodle::get_mouse_y())
-        //    {
-        //        enemy_x -= enemy_speed;
-        //    }
-        //}
-        //if (this->enemy_x <= doodle::get_mouse_x() && this->enemy_x + enemy_width + enemy_sense >= doodle::get_mouse_x())
-        //{
-        //    if (this->enemy_y + enemy_height + 87 >= doodle::get_mouse_y() && this->enemy_y - 87 <= doodle::get_mouse_y())
-        //    {
-        //        enemy_x += enemy_speed;
-        //    }
-        //}
 
 
         //this->enemy_x = this->player->x;
@@ -128,16 +111,16 @@ void Enemy::apply_physics()
 
         //check hitbox
         // 
-        if ((doodle::get_mouse_x() > this->enemy_x) && (doodle::get_mouse_x() < enemy_x + this->enemy_width) && (doodle::get_mouse_y() > this->enemy_y) && (doodle::get_mouse_y() < this->enemy_y + this->enemy_height))
-        {
-            this->enemy_HP--;
-        }
+        //if ((doodle::get_mouse_x() > this->enemy_x) && (doodle::get_mouse_x() < enemy_x + this->enemy_width) && (doodle::get_mouse_y() > this->enemy_y) && (doodle::get_mouse_y() < this->enemy_y + this->enemy_height))
+        //{
+        //    this->enemy_HP--;
+        //}
 
         //hit by bullet
-        if ((get_bullet_x > this->enemy_x) && (get_bullet_x < enemy_x + this->enemy_width) && (get_bullet_y > this->enemy_y) && (get_bullet_y < this->enemy_y + this->enemy_height))
-        {
-            this->enemy_HP--;
-        }
+        //if ((get_bullet_x > this->enemy_x) && (get_bullet_x < enemy_x + this->enemy_width) && (get_bullet_y > this->enemy_y) && (get_bullet_y < this->enemy_y + this->enemy_height))
+        //{
+        //    this->enemy_HP--;
+        //}
 
     }
 
