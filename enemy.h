@@ -29,7 +29,7 @@ class Enemy
 {
     int enemy_color = 0xdf4b40ff;
     int enemy_x = WINDOW_WIDTH / 3;
-    int enemy_y =  50;
+    int enemy_y = 300;
     int enemy_width = 25;
     int enemy_height = 50;
     int enemy_sense = 100;

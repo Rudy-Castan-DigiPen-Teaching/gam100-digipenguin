@@ -78,9 +78,6 @@ void Enemy::apply_physics()
     if (this->enemy_alive == true)
     {
 
-        //this->enemy_x += enemy_speed * this->x_velocity;
-        //this->enemy_y += enemy_speed * this->y_velocity;
-
         //if (this->enemy_x >= ENM_ROTATE_MAX)
         //{
         //    enemy_x -= enemy_speed * this->x_velocity;
@@ -95,35 +92,38 @@ void Enemy::apply_physics()
 
         if (this->enemy_x >= get_player_x && this-> enemy_x - enemy_sense <= get_player_x + 25)
         {
-            enemy_x -= enemy_speed;
+            if (this->enemy_y + enemy_height + 87 >= get_player_y && this->enemy_y - 87 <= get_player_y + 25)
+            {
+                enemy_x -= enemy_speed;
+            }
         }
         if (this->enemy_x <= get_player_x && this-> enemy_x +enemy_width + enemy_sense >= get_player_x)
         {
-            enemy_x += enemy_speed;
+            if (this->enemy_y + enemy_height + 87 >= get_player_y && this->enemy_y - 87 <= get_player_y + 25)
+            {
+                enemy_x += enemy_speed;
+            }
         }
 
-        //if(get_player_x <= this->enemy_x - enemy_sense)
+        //if (this->enemy_x >= doodle::get_mouse_x() && this->enemy_x - enemy_sense <= doodle::get_mouse_x())
         //{
-        //    this->x_velocity = -1;
+        //    if (this->enemy_y + enemy_height + 87 >= doodle::get_mouse_y() && this->enemy_y - 87 <= doodle::get_mouse_y())
+        //    {
+        //        enemy_x -= enemy_speed;
+        //    }
         //}
-        //if (get_player_x >= enemy_x + this->enemy_width + enemy_sense)
+        //if (this->enemy_x <= doodle::get_mouse_x() && this->enemy_x + enemy_width + enemy_sense >= doodle::get_mouse_x())
         //{
-        //    this->x_velocity = 1;
+        //    if (this->enemy_y + enemy_height + 87 >= doodle::get_mouse_y() && this->enemy_y - 87 <= doodle::get_mouse_y())
+        //    {
+        //        enemy_x += enemy_speed;
+        //    }
         //}
 
 
         //this->enemy_x = this->player->x;
         //this->enemy_y = this->player->y;
 
-
-        //if (get_player_y > this->enemy_y - enemy_sense)
-        //{
-        //    this->y_velocity = -1;
-        //}
-        //if(get_player_y < this->enemy_y + this->enemy_height + enemy_sense)
-        //{
-        //    this->y_velocity = 1;
-        //}
 
 
         //check hitbox
