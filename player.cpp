@@ -100,7 +100,9 @@ void Player::update_position() {
 
 	//std::cout << standing << std::endl;
 
-	if (this->y < -height) {
+	int y_block = -75; //why y axis odd???
+
+	if (this->y <= y_block) {
 
 		this->standing = true;
 	}
@@ -140,12 +142,16 @@ void Player::update_position() {
 
 
 
-	if (this->x >= 725) {
-		this->x = 725;
+	if (this->x >= 750) {
+		this->x = 750;
 	}
 
-	if (this->x <= 0) {
-		this->x = 0;
+	if (this->x <= 25) {
+		this->x = 25;
+	}
+
+	if (this->y <= y_block) {
+		this->y = y_block;
 	}
 
 	// gravity works
