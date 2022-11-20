@@ -26,6 +26,9 @@ extern double currentTime;
 
 extern const Player_sprites player_sprites;
 
+void push_button(doodle::KeyboardButtons button);
+void release_button(doodle::KeyboardButtons button);
+
 class Player {
 	int width = 25;
 	int height = 50;

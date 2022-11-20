@@ -13,8 +13,28 @@ Author : Donghyeok Hahm(donghyeok.hahm), Hnakyung Lee
 #include <doodle/doodle.hpp>
 
 
+#define BUTTON_LEFT 0
+#define BUTTON_RIGHT 1
+#define BUTTON_UP 2
+#define BUTTON_DOWN 3
+#define BUTTON_Z 4
+
+
+
 //make bool array
-bool array_move[3] = { false, false, false }; // { left, right, jump(Z key)}
+bool buttons[] = { false, false, false, false, false }; // { left, right, up, down, jump(Z key)}
+
+// use map(wip) : ~to make more sexy code~ //////////////////////////////////////////////////////
+//std::map<doodle::KeyboardButtons, bool> buttons[] = {
+//	{ doodle::KeyboardButtons::Left, false },
+//	{ doodle::KeyboardButtons::Right, false},
+//	{ doodle::KeyboardButtons::Up, false},
+//	{ doodle::KeyboardButtons::Down, false},
+//	{ doodle::KeyboardButtons::Z, false}
+//};
+//////////////////////////////////////////////////////////////////////
+
+
 
 Player::Player(double _x, double _y) {
 	this->x = _x;
@@ -22,21 +42,7 @@ Player::Player(double _x, double _y) {
 	this->sprite = player_sprites.player_sprite_placeholder;
 }
 
-/*
-void Player::update_position() {
-	if (doodle::KeyIsPressed) {
-		if (doodle::Key == doodle::KeyboardButtons::Left) {
-			this->x -= this->x_speed;
-		}
-		if (doodle::Key == doodle::KeyboardButtons::Right) {
-			this->x += this->x_speed;
-		}
-		if (doodle::Key == doodle::KeyboardButtons::Space) {
-			this->is_jumping = true;
-		}
-	}
-}
-*/
+
 
 void Player::jump() {
 
@@ -46,6 +52,48 @@ void Player::jump() {
 		this->standing = false;
 	}
 }
+
+//DO NOT put this functions(push,release_button) in Player Class (it'll become non-static)
+
+void push_button(doodle::KeyboardButtons button) {
+	switch (button) {
+	case doodle::KeyboardButtons::Left:
+		buttons[BUTTON_LEFT] = true;
+		break;
+	case doodle::KeyboardButtons::Right:
+		buttons[BUTTON_RIGHT] = true;
+		break;
+	case doodle::KeyboardButtons::Up:
+		buttons[BUTTON_UP] = true;
+		break;
+	case doodle::KeyboardButtons::Down:
+		buttons[BUTTON_DOWN] = true;
+		break;
+	case doodle::KeyboardButtons::Z:
+		buttons[BUTTON_Z] = true;
+		break;
+	}
+};
+
+void release_button(doodle::KeyboardButtons button) {
+	switch (button) {
+	case doodle::KeyboardButtons::Left:
+		buttons[BUTTON_LEFT] = false;
+		break;
+	case doodle::KeyboardButtons::Right:
+		buttons[BUTTON_RIGHT] = false;
+		break;
+	case doodle::KeyboardButtons::Up:
+		buttons[BUTTON_UP] = false;
+		break;
+	case doodle::KeyboardButtons::Down:
+		buttons[BUTTON_DOWN] = false;
+		break;
+	case doodle::KeyboardButtons::Z:
+		buttons[BUTTON_Z] = false;
+		break;
+	}
+};
 
 void Player::update_position() {
 	//block height value (change to platform height)
@@ -59,64 +107,31 @@ void Player::update_position() {
 
 
 
-	if (!doodle::KeyIsPressed) {
-
-		array_move[0] = false;
-		array_move[1] = false;
-		array_move[2] = false;
-
-		std::cout << "clear" << std::endl;
-
-	}
-
-
-	else if (true) {
-
-		if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Left) {
-			array_move[0] = true;
-			std::cout << "Left" << std::endl;
-		}
-
-		else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Right) {
-			array_move[1] = true;
-			std::cout << "Right" << std::endl;
-		}
-
-		else if (doodle::KeyIsPressed && doodle::Key == doodle::KeyboardButtons::Z) {
-			array_move[2] = true;
-			std::cout << "Zump" << std::endl;
-		}
-	}
-
-	if (array_move[0] == true && array_move[2] == true) { //left jump
+	if (buttons[BUTTON_LEFT] && buttons[BUTTON_Z]) { //left jump
 
 		jump();
 		this->x -= playerSpeed;
-
-		std::cout << "left jumpppppppppppppppppppppppppppppppppppppppppppp" << std::endl;
 	}
 
-	else if (array_move[2] == true && array_move[1] == true) { //right jump
+	else if (buttons[BUTTON_RIGHT] && buttons[BUTTON_Z]) { //right jump
 
 		jump();
 		this->x += playerSpeed;
-
-		std::cout << "right jumpppppppppppppppppppppppppppppppppppppppppppp" << std::endl;
 	}
 
 
 
 
-	else if (array_move[0] == true && this->x > 0) {
+	else if (buttons[BUTTON_LEFT]) {
 		this->x -= playerSpeed;
 	}
 
-	else if (array_move[1] == true && this->x < 725) {
+	else if (buttons[BUTTON_RIGHT]) {
 		this->x += playerSpeed;
 	}
 
 
-	else if (array_move[2] == true) { //jump
+	else if (buttons[BUTTON_Z]) { //jump
 
 		//previousTime = currentTime;
 

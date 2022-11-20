@@ -53,6 +53,9 @@ int main() {
 
 	map.update();
 
+	doodle::set_callback_key_pressed(push_button);
+	doodle::set_callback_key_released(release_button);
+
 	while (!doodle::is_window_closed()) {
 		doodle::update_window();
 		doodle::clear_background(255); // placeholder for bg (will be replaced with map())
