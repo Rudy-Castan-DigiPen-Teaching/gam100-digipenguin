@@ -29,11 +29,11 @@ void Enemy::get_player()
 }
 
 
-void Enemy::get_shot()
-{
-    get_bullet_x = shot->x;
-    get_bullet_y = shot->y;
-}
+//void Enemy::get_shot()
+//{
+//    get_bullet_x = shot->x;
+//    get_bullet_y = shot->y;
+//}
 
 
 //void Enemy::Init(class Shot* shot)

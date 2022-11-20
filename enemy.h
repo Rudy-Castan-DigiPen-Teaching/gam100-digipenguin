@@ -50,7 +50,7 @@ public:
     void check_alive();
     void apply_physics();
     void get_player();
-    void get_shot();
+ /*   void get_shot();*/
 
 
 
