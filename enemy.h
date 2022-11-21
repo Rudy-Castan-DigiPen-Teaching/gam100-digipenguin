@@ -28,18 +28,20 @@ class Shot;
 class Enemy
 {
     int enemy_color = 0xdf4b40ff;
-    int enemy_x = WINDOW_WIDTH / 3;
-    int enemy_y = 25;
-    int enemy_width = 25;
-    int enemy_height = 50;
-    int enemy_sense = 100;
-    int enemy_HP = 10;
+    double enemy_x = WINDOW_WIDTH / 3;
+    double enemy_y = 25;
+    double enemy_width = 25;
+    double enemy_height = 50;
+    double enemy_sense = 100;
+    double x_direction = 1;
+    double enemy_HP = 10;
     int get_bullet_x ;
     int get_bullet_y;
-    int get_player_x;
-    int get_player_y;
+    double get_player_x;
+    double get_player_y;
     bool enemy_alive = false;
-    int enemy_speed = 1;
+    bool player_spoted = false;
+    double enemy_speed = 1.3;
     //class Shot* m_pA_shot;
 
 public:
@@ -50,6 +52,7 @@ public:
     void check_alive();
     void apply_physics();
     void get_player();
+    void player_spot();
  /*   void get_shot();*/
 
 
