@@ -35,14 +35,13 @@ class Enemy
     double enemy_sense = 100;
     double x_direction = 1;
     double enemy_HP = 10;
-    int get_bullet_x ;
-    int get_bullet_y;
+    //int get_bullet_x ;
+    //int get_bullet_y;
     double get_player_x;
     double get_player_y;
     bool enemy_alive = false;
     bool player_spoted = false;
     double enemy_speed = 1.3;
-    //class Shot* m_pA_shot;
 
 public:
 
