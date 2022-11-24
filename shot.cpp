@@ -33,15 +33,7 @@ void Shot::display() {
 void Shot::update_position() {
 	this->x += this->speed * std::cos(this->angle);
 	this->x += this->speed * std::sin(this->angle);
-	//if (this->x >= 775)
-	//{
-	//	this->x = 775;
-	//}
-	//if (this->x <= 25)
-	//{
-	//	this->x = 25;
-	//}
-	for (int i = 0; i < shots_fired.size(); i++)
+	for (int i = 0; i < shots_fired.size() - 1; i++)
 	{
 		if (this->x >= 775 || this->x <= 25)
 		{
