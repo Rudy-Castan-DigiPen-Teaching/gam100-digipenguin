@@ -26,7 +26,6 @@ Shot::Shot(double _x, double _y, Shot_type _shot_type, Direction _direction) {
 void Shot::display() {
 	//doodle::draw_image(this->sprite, this->x, this->y);
 	doodle::no_outline();
-	doodle::set_fill_color(doodle::HexColor{ 0xff0000ff });
 	doodle::draw_ellipse(this->x, this->y, 10, 10);
 }
 
