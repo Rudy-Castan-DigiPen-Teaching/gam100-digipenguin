@@ -18,7 +18,7 @@ void Enemy::draw()
     doodle::pop_settings();
     doodle::push_settings();
     doodle::no_fill();
-    doodle::draw_rectangle(this->enemy_x - 100, this->enemy_y - 87, 225, 225);
+    doodle::draw_rectangle(this->enemy_x - enemy_sense, this->enemy_y - enemy_sense,  + this->enemy_width + this->enemy_sense*2,this->enemy_height + this->enemy_sense*2);
     doodle::pop_settings();
 
 }
@@ -27,6 +27,8 @@ void Enemy::get_player()
 {
     get_player_x = player->x;
     get_player_y = player->y;
+    get_player_width = player->width;
+    get_player_height = player->height;
 
 
 }
@@ -67,9 +69,9 @@ void Enemy::check_alive()
 
 void Enemy::player_spot()
 {
-    if (this->enemy_x - this->enemy_sense <= this->get_player_x + 25 && this->enemy_x + this->enemy_width + this->enemy_sense >= this->get_player_x)
+    if (this->enemy_x - this->enemy_sense <= this->get_player_x + get_player_width && this->enemy_x + this->enemy_width + this->enemy_sense >= this->get_player_x)
     {
-         if (this->enemy_y + enemy_height + 87 >= get_player_y && this->enemy_y - 87 <= get_player_y + 25)
+         if (this->enemy_y + this->enemy_height + this->enemy_sense >= get_player_y && this->enemy_y - enemy_sense <= get_player_y + get_player_height)
          {
         this->player_spoted = true;
          }
@@ -108,28 +110,30 @@ void Enemy::apply_physics()
 
         if (this->player_spoted == true)
         {
-     
-            if (this->enemy_x >= get_player_x && this->enemy_x - enemy_sense <= get_player_x + 25)
+             //player left
+            if (this->enemy_x >= get_player_x && this->enemy_x - enemy_sense <= get_player_x + get_player_width)
             {
-                if (this->enemy_y + enemy_height + 87 >= get_player_y && this->enemy_y - 87 <= get_player_y + 25)
-                {
-                    this->enemy_x -= enemy_speed +1;
-                }
+                this->enemy_x -= enemy_speed + 1;
+            }   
+            //player up
+            if (this->enemy_y + enemy_height / 2 <= get_player_y + get_player_height / 2 && this->enemy_y + enemy_height + enemy_sense >= get_player_y)
+            {
+                this->enemy_y += enemy_speed + 1;
             }
+            //player right
             if (this->enemy_x <= get_player_x && this->enemy_x + enemy_width + enemy_sense >= get_player_x)
             {
-                if (this->enemy_y + enemy_height + 87 >= get_player_y && this->enemy_y - 87 <= get_player_y + 25)
-                {
-                    enemy_x += enemy_speed +1;
-                }
+                this->enemy_x += enemy_speed + 1;
+            }
+            //player down
+            if (this->enemy_y + enemy_height/2 >= get_player_y + get_player_height/2 && this->enemy_y - enemy_sense <= get_player_y + get_player_height)
+            {
+                this->enemy_y -= enemy_speed + 1;
             }
         }
 
-
         //this->enemy_x = this->player->x;
         //this->enemy_y = this->player->y;
-
-
 
         //check hitbox
 

@@ -31,7 +31,7 @@ class Enemy
     double enemy_x = WINDOW_WIDTH / 3;
     double enemy_y = 25;
     double enemy_width = 25;
-    double enemy_height = 50;
+    double enemy_height = 25;
     double enemy_sense = 100;
     double x_direction = 1;
     double enemy_HP = 10;
@@ -39,6 +39,8 @@ class Enemy
     //int get_bullet_y;
     double get_player_x;
     double get_player_y;
+    double get_player_width;
+    double get_player_height;
     bool enemy_alive = false;
     bool player_spoted = false;
     double enemy_speed = 1.3;

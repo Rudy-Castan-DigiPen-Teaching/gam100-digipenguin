@@ -30,8 +30,7 @@ void push_button(doodle::KeyboardButtons button);
 void release_button(doodle::KeyboardButtons button);
 
 class Player {
-	int width = 25;
-	int height = 50;
+
 
 
 	double x_acceleration;
@@ -57,6 +56,8 @@ class Player {
 
 public:
 	double x, y;
+	int width = 25;
+	int height = 50;
 	Player(double _x, double _y);
 	void update_sprite();
 	void update_position();
